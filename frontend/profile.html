@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neural Learn | Learner Profile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&family=Sora:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#514254",
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "surface-dim": "#171020",
+                        "primary-fixed": "#f9d8ff",
+                        "background": "#0B0514",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#002022",
+                        "on-tertiary-container": "#000607",
+                        "on-surface-variant": "#d5c0d7",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#7df4ff",
+                        "tertiary-container": "#00848d",
+                        "on-surface": "#ebdef6",
+                        "surface-tint": "#ecb1ff",
+                        "on-background": "#ebdef6",
+                        "surface-container-low": "#201829",
+                        "primary-fixed-dim": "#ecb1ff",
+                        "surface-container-lowest": "#120b1b",
+                        "inverse-on-surface": "#352d3f",
+                        "on-primary": "#520070",
+                        "on-secondary-fixed": "#2b0052",
+                        "on-error": "#690005",
+                        "outline": "#9d8ba0",
+                        "on-secondary": "#421b6a",
+                        "primary-container": "#bf00ff",
+                        "surface": "#171020",
+                        "secondary-container": "#5c3785",
+                        "primary": "#ecb1ff",
+                        "inverse-primary": "#9900ce",
+                        "surface-bright": "#3e3648",
+                        "surface-container": "#241c2d",
+                        "on-tertiary": "#00363a",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#3a3143",
+                        "on-primary-fixed": "#320046",
+                        "on-primary-container": "#ffffff",
+                        "on-secondary-fixed-variant": "#593482",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "surface-container-highest": "#3a3143",
+                        "surface-container-high": "#2f2738",
+                        "on-secondary-container": "#d0a7fe",
+                        "inverse-surface": "#ebdef6",
+                        "tertiary": "#00dbe9",
+                        "secondary-fixed-dim": "#dbb8ff",
+                        "secondary-fixed": "#efdbff",
+                        "secondary": "#dbb8ff",
+                        "on-primary-fixed-variant": "#75009e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "gutter": "16px",
+                        "stack-sm": "8px",
+                        "container-padding": "24px",
+                        "stack-md": "16px",
+                        "glass-padding": "20px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Sora"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Sora"],
+                        "label-xs": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Sora"],
+                        "display": ["Sora"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-xs": ["10px", {"lineHeight": "12px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(36, 28, 45, 0.4);
+            backdrop-filter: blur(32px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glow-violet { box-shadow: 0 0 20px rgba(191, 0, 255, 0.3); }
+        .glow-cyan { box-shadow: 0 0 20px rgba(0, 219, 233, 0.2); }
+        .skill-node { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .skill-node:hover { transform: scale(1.1); filter: brightness(1.2); }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        
+        .progress-bar-fill {
+            transition: width 1.5s ease-out;
+            background: linear-gradient(90deg, #ecb1ff, #bf00ff);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-md overflow-x-hidden">
+<!-- Top AppBar Shell -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding py-stack-md bg-surface/60 backdrop-blur-xl dark:bg-surface-dim/60 border-b border-white/10 shadow-[0_0_20px_rgba(191,0,255,0.3)]">
+<div class="flex items-center gap-stack-sm">
+<div class="w-10 h-10 rounded-full border-2 border-primary p-0.5 glow-violet">
+<img class="w-full h-full rounded-full object-cover" data-alt="A futuristic 3D avatar profile of a student with glowing neural implants and cybernetic enhancements, set against a dark purple and neon violet studio background with soft bokeh lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhyGabtGXLyvsnd7-78lqVl04Fx2FPv4wFiLcyCknWZydWm9UJrUA1GNhvCM7vEPcuIb7vbGPc-31i5QwllfIkqG_mjvcfUEvlPCoBOXlKxwl1h8GJ9U5HGUVPcYBjM9Bum0PadD5xiM2WLuIs9FJyYhhyVKe2ceZvkTBu4ykfVNTJY4GzD2UnlUBOFJxJG5aVlLRgLtaIC11iy1ELkCrhhWfVKVoXLO5cfxUW6GtYfADxF7gg8zc5pA"/>
+</div>
+<span class="font-display text-headline-md tracking-widest text-primary drop-shadow-[0_0_8px_rgba(236,177,255,0.8)]">NEURAL LEARN</span>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="text-primary hover:text-tertiary transition-colors duration-300">
+<span class="material-symbols-outlined text-[28px]">search</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-container-padding max-w-lg mx-auto">
+<!-- Hero Profile Section -->
+<section class="mb-stack-lg">
+<div class="glass-card rounded-xl p-glass-padding flex flex-col items-center text-center">
+<div class="relative mb-stack-md">
+<div class="w-24 h-24 rounded-full border-4 border-primary glow-violet overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of a high-tech robotic iris with intricate purple circuits and cyan light patterns, representing advanced human-AI integration in a futuristic cyberpunk educational setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDese542YW-uHxTRiCZRxQqzMCPXdY3y57bJl-8gA6khbOXhYL_2etM9R4G3__cIXrTW13bLZ97nhpTjYMIaAo6kmVOUR4JOEeGVKeSVHesvY9CFoMs06qCjs_7bFRD8V2KleDrziKXFRxL_YWzMGLwIfq-FljlZjwNCTHKFn0HgbmQCv1S7jjua0vMbe8yT7CHc1wpGQgcD3yOS2PTa26mtaGD9Wnt2fy_YtcpwPwJfcxRJkeC_NV5YQ"/>
+</div>
+<div class="absolute -bottom-2 -right-2 bg-tertiary text-on-tertiary-fixed rounded-full px-3 py-1 font-label-xs text-label-xs shadow-lg" id="profile-level">
+                        LVL 42
+                    </div>
+</div>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-1" id="profile-name">Alex Thorne</h1>
+<p class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-widest" id="profile-path">Neural Architect Path</p>
+<div class="w-full mt-stack-md bg-surface-container-high h-2 rounded-full overflow-hidden">
+<div class="progress-bar-fill h-full" id="profile-xp-bar" style="width: 78%;"></div>
+</div>
+<div class="w-full flex justify-between mt-1 font-label-xs text-label-xs text-on-surface-variant">
+<span id="profile-xp-current">12,450 XP</span>
+<span id="profile-xp-next">15,000 XP</span>
+</div>
+</div>
+</section>
+<!-- Personal Stats Bento -->
+<section class="grid grid-cols-2 gap-stack-md mb-stack-lg">
+<div class="glass-card rounded-xl p-stack-md flex flex-col gap-1">
+<span class="material-symbols-outlined text-tertiary">bolt</span>
+<span class="font-headline-md text-headline-md text-on-surface" id="profile-streak">14</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Day Streak</span>
+</div>
+<div class="glass-card rounded-xl p-stack-md flex flex-col gap-1">
+<span class="material-symbols-outlined text-primary">school</span>
+<span class="font-headline-md text-headline-md text-on-surface" id="profile-completed">12</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Courses Done</span>
+</div>
+</section>
+<!-- Skill Tree Visualization -->
+<section class="mb-stack-lg">
+<div class="flex justify-between items-center mb-stack-md">
+<h2 class="font-headline-md text-headline-md text-on-surface">Skill Tree</h2>
+<span class="font-label-sm text-label-sm text-tertiary">View Full Tree</span>
+</div>
+<div class="glass-card rounded-xl p-glass-padding aspect-square relative overflow-hidden flex items-center justify-center">
+<!-- Decorative background grid/lines -->
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 2px 2px, #ecb1ff 1px, transparent 0); background-size: 24px 24px;"></div>
+<div class="relative w-full h-full flex items-center justify-center">
+<!-- Central Node -->
+<div class="skill-node absolute z-10 w-20 h-20 rounded-full bg-primary/20 border border-primary flex items-center justify-center glow-violet animate-float">
+<span class="material-symbols-outlined text-primary text-3xl" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<!-- Branching Nodes -->
+<div class="skill-node absolute top-4 left-1/2 -translate-x-1/2 w-12 h-12 rounded-lg bg-tertiary/10 border border-tertiary flex items-center justify-center glow-cyan">
+<span class="material-symbols-outlined text-tertiary">code</span>
+</div>
+<div class="skill-node absolute bottom-12 left-8 w-12 h-12 rounded-lg bg-surface-container border border-outline flex items-center justify-center opacity-60">
+<span class="material-symbols-outlined text-on-surface-variant">monitoring</span>
+</div>
+<div class="skill-node absolute bottom-12 right-8 w-12 h-12 rounded-lg bg-primary/10 border border-primary/40 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary">hub</span>
+</div>
+<div class="skill-node absolute top-1/4 right-2 w-10 h-10 rounded-full bg-surface-container border border-outline flex items-center justify-center opacity-40">
+<span class="material-symbols-outlined text-on-surface-variant">token</span>
+</div>
+<!-- SVG Connection Lines (Simulated) -->
+<svg class="absolute inset-0 w-full h-full pointer-events-none opacity-20">
+<line stroke="#00dbe9" stroke-width="2" x1="50%" x2="50%" y1="50%" y2="15%"></line>
+<line stroke="#ebdef6" stroke-dasharray="4" stroke-width="1" x1="50%" x2="25%" y1="50%" y2="75%"></line>
+<line stroke="#ecb1ff" stroke-width="2" x1="50%" x2="75%" y1="50%" y2="75%"></line>
+</svg>
+</div>
+</div>
+</section>
+<!-- Earned Badges -->
+<section class="mb-stack-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-stack-md">Specializations</h2>
+<div class="flex gap-stack-md overflow-x-auto pb-4 no-scrollbar">
+<div class="flex-shrink-0 w-24 h-32 glass-card rounded-xl flex flex-col items-center justify-center p-stack-sm gap-2 text-center border-tertiary/30">
+<div class="w-12 h-12 rounded-full bg-tertiary/20 flex items-center justify-center border border-tertiary shadow-[0_0_15px_rgba(0,219,233,0.4)]">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface leading-tight">Prompt Eng</span>
+</div>
+<div class="flex-shrink-0 w-24 h-32 glass-card rounded-xl flex flex-col items-center justify-center p-stack-sm gap-2 text-center border-primary/30">
+<div class="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center border border-primary shadow-[0_0_15px_rgba(191,0,255,0.4)]">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface leading-tight">Neural Dev</span>
+</div>
+<div class="flex-shrink-0 w-24 h-32 glass-card rounded-xl flex flex-col items-center justify-center p-stack-sm gap-2 text-center border-outline-variant">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center border border-outline opacity-40">
+<span class="material-symbols-outlined text-on-surface-variant">database</span>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface-variant leading-tight">Data Miner</span>
+</div>
+<div class="flex-shrink-0 w-24 h-32 glass-card rounded-xl flex flex-col items-center justify-center p-stack-sm gap-2 text-center border-outline-variant">
+<div class="w-12 h-12 rounded-full bg-surface-container flex items-center justify-center border border-outline opacity-40">
+<span class="material-symbols-outlined text-on-surface-variant">security</span>
+</div>
+<span class="font-label-xs text-label-xs text-on-surface-variant leading-tight">Cyber Sec</span>
+</div>
+</div>
+</section>
+<!-- AI Recommendation Preferences -->
+<section class="mb-stack-lg">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-stack-md">AI Personalization</h2>
+<div class="glass-card rounded-xl p-glass-padding space-y-stack-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-semibold">Deep Dive Mode</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">Focus on core principles</span>
+</div>
+<div class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-body-md text-on-surface font-semibold">Gamification Intensity</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">High challenge, high reward</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-tertiary">speed</span>
+<span id="profile-gamification-intensity" class="font-label-sm text-label-sm text-tertiary">ULTRA</span>
+</div>
+</div>
+<button class="w-full py-stack-md bg-primary text-on-primary font-bold rounded-lg shadow-[0_0_15px_rgba(191,0,255,0.3)] active:scale-95 transition-transform">
+                    RECALIBRATE NEURAL ENGINE
+                </button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-gutter bg-surface-container-lowest/80 backdrop-blur-2xl dark:bg-surface-container-lowest/80 border-t border-white/10 shadow-[0_-10px_30px_rgba(0,219,233,0.15)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-tertiary-fixed-dim transition-all" href="explore.html">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-tertiary-fixed-dim transition-all" href="index.html">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-sm text-label-sm">Learning</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-tertiary-fixed-dim transition-all" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">AI Labs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary drop-shadow-[0_0_10px_rgba(0,219,233,0.8)]" href="profile.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">account_circle</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<script>
+        const BASE_URL = window.location.origin;
+
+        async function initProfile() {
+            try {
+                const res = await fetch(`${BASE_URL}/api/v1/profile`);
+                if (res.ok) {
+                    const profile = await res.json();
+                    
+                    document.getElementById('profile-name').innerText = profile.name;
+                    document.getElementById('profile-level').innerText = `LVL ${profile.level}`;
+                    document.getElementById('profile-path').innerText = profile.path.toUpperCase();
+                    
+                    const xpPercentage = (profile.current_xp / profile.next_lvl_xp) * 100;
+                    document.getElementById('profile-xp-bar').style.width = `${xpPercentage}%`;
+                    document.getElementById('profile-xp-current').innerText = `${profile.current_xp.toLocaleString()} XP`;
+                    document.getElementById('profile-xp-next').innerText = `${profile.next_lvl_xp.toLocaleString()} XP`;
+                    
+                    document.getElementById('profile-streak').innerText = profile.streak_days;
+                    document.getElementById('profile-completed').innerText = profile.completed_courses_count;
+                    
+                    const deepDiveToggle = document.querySelector('input[type="checkbox"]');
+                    if (deepDiveToggle) {
+                        deepDiveToggle.checked = profile.deep_dive_mode;
+                    }
+                    const intensityLabel = document.getElementById('profile-gamification-intensity');
+                    if (intensityLabel) {
+                        intensityLabel.innerText = profile.gamification_intensity;
+                    }
+                }
+            } catch (err) {
+                console.error("Error loading profile stats:", err);
+            }
+        }
+
+        const recalibrateBtn = document.querySelector('button.bg-primary');
+        if (recalibrateBtn) {
+            recalibrateBtn.addEventListener('click', async () => {
+                recalibrateBtn.innerText = "RECALIBRATING NEURAL ARCHITECTURE...";
+                recalibrateBtn.disabled = true;
+                recalibrateBtn.classList.add('glow-cyan');
+                
+                setTimeout(() => {
+                    recalibrateBtn.innerText = "NEURAL ENGINE OPTIMIZED";
+                    recalibrateBtn.className = recalibrateBtn.className.replace('bg-primary', 'bg-tertiary text-on-tertiary-fixed glow-cyan');
+                    
+                    setTimeout(() => {
+                        recalibrateBtn.innerText = "RECALIBRATE NEURAL ENGINE";
+                        recalibrateBtn.className = recalibrateBtn.className.replace('bg-tertiary text-on-tertiary-fixed glow-cyan', 'bg-primary text-on-primary');
+                        recalibrateBtn.disabled = false;
+                    }, 2000);
+                }, 1500);
+            });
+        }
+
+        document.querySelectorAll('.skill-node').forEach(node => {
+            node.addEventListener('mousedown', () => {
+                node.style.transform = 'scale(0.9)';
+            });
+            node.addEventListener('mouseup', () => {
+                node.style.transform = 'scale(1.1)';
+            });
+        });
+
+        const scrollContainer = document.querySelector('.no-scrollbar');
+        if(scrollContainer) {
+            scrollContainer.addEventListener('wheel', (evt) => {
+                evt.preventDefault();
+                scrollContainer.scrollLeft += evt.deltaY;
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', initProfile);
+    </script>
+</body></html>

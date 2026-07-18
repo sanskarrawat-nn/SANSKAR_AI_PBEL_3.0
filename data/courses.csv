@@ -1,0 +1,6 @@
+Course_ID,Title,Category,Difficulty,Avg_Rating
+1,Java Beginners Tutorial,Core Programming,Beginner,4.8
+2,Python Beginners Tutorial,Core Programming,Beginner,4.9
+3,C++ Beginners Tutorial,Core Programming,Intermediate,4.7
+4,C Language Tutorial for Beginners,Core CS,Intermediate,4.6
+5,Rust Programming Course for Beginners,Systems Programming,Advanced,4.5

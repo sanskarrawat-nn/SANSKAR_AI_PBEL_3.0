@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NEURAL LEARN | Course Discovery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&family=Sora:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline-variant": "#514254",
+                    "tertiary-fixed-dim": "#00dbe9",
+                    "surface-dim": "#171020",
+                    "primary-fixed": "#f9d8ff",
+                    "background": "#171020",
+                    "error-container": "#93000a",
+                    "on-tertiary-fixed": "#002022",
+                    "on-tertiary-container": "#000607",
+                    "on-surface-variant": "#d5c0d7",
+                    "on-error-container": "#ffdad6",
+                    "tertiary-fixed": "#7df4ff",
+                    "tertiary-container": "#00848d",
+                    "on-surface": "#ebdef6",
+                    "surface-tint": "#ecb1ff",
+                    "on-background": "#ebdef6",
+                    "surface-container-low": "#201829",
+                    "primary-fixed-dim": "#ecb1ff",
+                    "surface-container-lowest": "#120b1b",
+                    "inverse-on-surface": "#352d3f",
+                    "on-primary": "#520070",
+                    "on-secondary-fixed": "#2b0052",
+                    "on-error": "#690005",
+                    "outline": "#9d8ba0",
+                    "on-secondary": "#421b6a",
+                    "primary-container": "#bf00ff",
+                    "surface": "#171020",
+                    "secondary-container": "#5c3785",
+                    "primary": "#ecb1ff",
+                    "inverse-primary": "#9900ce",
+                    "surface-bright": "#3e3648",
+                    "surface-container": "#241c2d",
+                    "on-tertiary": "#00363a",
+                    "error": "#ffb4ab",
+                    "surface-variant": "#3a3143",
+                    "on-primary-fixed": "#320046",
+                    "on-primary-container": "#ffffff",
+                    "on-secondary-fixed-variant": "#593482",
+                    "on-tertiary-fixed-variant": "#004f54",
+                    "surface-container-highest": "#3a3143",
+                    "surface-container-high": "#2f2738",
+                    "on-secondary-container": "#d0a7fe",
+                    "inverse-surface": "#ebdef6",
+                    "tertiary": "#00dbe9",
+                    "secondary-fixed-dim": "#dbb8ff",
+                    "secondary-fixed": "#efdbff",
+                    "secondary": "#dbb8ff",
+                    "on-primary-fixed-variant": "#75009e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "32px",
+                    "gutter": "16px",
+                    "stack-sm": "8px",
+                    "container-padding": "24px",
+                    "stack-md": "16px",
+                    "glass-padding": "20px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Sora"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "headline-md": ["Sora"],
+                    "label-xs": ["JetBrains Mono"],
+                    "headline-lg-mobile": ["Sora"],
+                    "display": ["Sora"],
+                    "label-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "label-xs": ["10px", {"lineHeight": "12px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                    "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(58, 49, 67, 0.4);
+            backdrop-filter: blur(32px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            border-color: rgba(236, 177, 255, 0.5);
+            box-shadow: 0 0 20px rgba(191, 0, 255, 0.3);
+            transform: translateY(-4px);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-glow {
+            filter: drop-shadow(0 0 8px rgba(0, 219, 233, 0.8));
+        }
+        .neon-text-primary {
+            text-shadow: 0 0 10px rgba(236, 177, 255, 0.8);
+        }
+        .neon-border-pulse {
+            animation: borderPulse 2s infinite alternate;
+        }
+        @keyframes borderPulse {
+            from { border-color: rgba(236, 177, 255, 0.2); }
+            to { border-color: rgba(236, 177, 255, 0.8); }
+        }
+        body::-webkit-scrollbar {
+            width: 6px;
+        }
+        body::-webkit-scrollbar-thumb {
+            background: #ecb1ff;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24 font-body-md overflow-x-hidden">
+<!-- Top App Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding py-stack-md bg-surface/60 backdrop-blur-xl border-b border-white/10 shadow-[0_0_20px_rgba(191,0,255,0.3)]">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full border-2 border-primary overflow-hidden shadow-[0_0_12px_rgba(236,177,255,0.6)]">
+<img class="w-full h-full object-cover" data-alt="A futuristic portrait of a student with a digital neural glow across their face, set in a dimly lit cyberpunk study room with purple and cyan neon highlights. The person has an focused expression, wearing sleek bone-conduction headphones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAsbZXbqdCfUvyM3NiE07Prg2U7O0Cke6urZHgeRaUmEAfmMzFVF4nIY640m2ya5Aj1_uw3TLfvAf0C5puOqLi7h1dT1imzzpnpZdGJbOeOTjE3v5zydXSga45yY_gIlA4JGkJgJS8a0aYUnLsWJR80Z2MEbxVcO4mMK2Hn6apfOUix043FrrT6QUN9Bh3ozk00cHmf-rKSBLe_jJQPllg8VczBcF5mK3nhO0bdfjI-5pl11OXpl3xgTA"/>
+</div>
+<span class="font-display text-headline-md tracking-widest text-primary drop-shadow-[0_0_8px_rgba(236,177,255,0.8)]">NEURAL LEARN</span>
+</div>
+<button class="text-primary hover:text-tertiary transition-colors duration-300 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[28px]">search</span>
+</button>
+</header>
+<main class="pt-24 px-container-padding space-y-stack-lg max-w-5xl mx-auto">
+<!-- Hero Search Section -->
+<section class="space-y-stack-md">
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface lg:font-headline-lg lg:text-headline-lg">Forge Your Digital Future</h1>
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline">search</span>
+<input id="search-input" class="w-full h-14 pl-12 pr-4 bg-[#1A0033] border border-white/10 rounded-xl text-on-surface placeholder:text-outline focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/50 transition-all" placeholder="Search neural nodes (e.g., 'Neural', 'Quantum')..." type="text"/>
+<div class="absolute inset-0 -z-10 bg-primary/5 blur-xl opacity-0 group-focus-within:opacity-100 transition-opacity"></div>
+</div>
+</section>
+<!-- Filter Chips -->
+<section class="flex gap-stack-sm overflow-x-auto pb-2 scrollbar-hide">
+<button class="px-5 py-2 rounded-full bg-primary text-on-primary font-label-sm text-label-sm whitespace-nowrap shadow-[0_0_10px_rgba(236,177,255,0.5)]">
+                Trending
+            </button>
+<button class="px-5 py-2 rounded-full bg-surface-container-highest border border-white/10 text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap hover:border-tertiary transition-colors">
+                AI Picks
+            </button>
+<button class="px-5 py-2 rounded-full bg-surface-container-highest border border-white/10 text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap hover:border-tertiary transition-colors">
+                New Skills
+            </button>
+<button class="px-5 py-2 rounded-full bg-surface-container-highest border border-white/10 text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap hover:border-tertiary transition-colors">
+                Quantum Computing
+            </button>
+</section>
+<!-- Course Discovery Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-stack-md" id="course-discovery-grid">
+<!-- Discovery Grid will be populated dynamically -->
+</section>
+<!-- Recommended Tracks Section -->
+<section class="space-y-stack-md py-stack-md">
+<div class="flex justify-between items-end">
+<h2 class="font-headline-md text-headline-md text-on-surface">Neural Pathways</h2>
+<button class="text-tertiary font-label-sm text-label-sm hover:underline">See all paths</button>
+</div>
+<div class="flex gap-stack-md overflow-x-auto pb-4 scrollbar-hide -mx-container-padding px-container-padding">
+<!-- Track 1 -->
+<div class="min-w-[280px] p-glass-padding glass-card rounded-2xl space-y-stack-md flex flex-col items-center text-center border-tertiary/20">
+<div class="w-16 h-16 rounded-full bg-tertiary/10 flex items-center justify-center border border-tertiary/30 shadow-[0_0_15px_rgba(0,219,233,0.2)]">
+<span class="material-symbols-outlined text-tertiary text-3xl">psychology</span>
+</div>
+<div>
+<h4 class="font-headline-md text-[18px] text-on-surface">AI Architect</h4>
+<p class="text-outline-variant font-label-sm text-label-sm">5 Core Modules</p>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1">
+<div class="bg-tertiary h-full w-1/3 rounded-full"></div>
+</div>
+<button class="w-full py-2 rounded-lg border border-tertiary text-tertiary font-label-sm text-label-sm hover:bg-tertiary/10 transition-colors">Continue Path</button>
+</div>
+<!-- Track 2 -->
+<div class="min-w-[280px] p-glass-padding glass-card rounded-2xl space-y-stack-md flex flex-col items-center text-center border-primary/20">
+<div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center border border-primary/30 shadow-[0_0_15px_rgba(236,177,255,0.2)]">
+<span class="material-symbols-outlined text-primary text-3xl">code</span>
+</div>
+<div>
+<h4 class="font-headline-md text-[18px] text-on-surface">Web 4.0 Engineer</h4>
+<p class="text-outline-variant font-label-sm text-label-sm">8 Core Modules</p>
+</div>
+<div class="w-full bg-surface-container rounded-full h-1">
+<div class="bg-primary h-full w-0 rounded-full"></div>
+</div>
+<button class="w-full py-2 rounded-lg border border-primary text-primary font-label-sm text-label-sm hover:bg-primary/10 transition-colors">Enroll Now</button>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-gutter bg-surface-container-lowest/80 backdrop-blur-2xl border-t border-white/10 shadow-[0_-10px_30px_rgba(0,219,233,0.15)] rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-tertiary drop-shadow-[0_0_10px_rgba(0,219,233,0.8)] active:translate-y-[-4px] transition-all" href="explore.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-tertiary-fixed-dim transition-all" href="index.html">
+<span class="material-symbols-outlined">school</span>
+<span class="font-label-sm text-label-sm">Learning</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-tertiary-fixed-dim transition-all" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">AI Labs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-tertiary-fixed-dim transition-all" href="profile.html">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<!-- Ambient Visual Elements -->
+<div class="fixed top-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-primary/10 blur-[120px] -z-20 pointer-events-none"></div>
+<div class="fixed bottom-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-tertiary/10 blur-[100px] -z-20 pointer-events-none"></div>
+<script>
+        const BASE_URL = window.location.origin;
+        const grid = document.getElementById('course-discovery-grid');
+        const searchInput = document.getElementById('search-input');
+
+        // Micro-interactions for chips
+        const chipButtons = document.querySelectorAll('section.scrollbar-hide button');
+        chipButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const categoryText = btn.innerText.trim();
+                if (categoryText === "Trending") {
+                    loadPopular();
+                } else {
+                    loadPopular(categoryText);
+                }
+                
+                // Active style toggle (only for chips)
+                chipButtons.forEach(b => {
+                    b.className = "px-5 py-2 rounded-full bg-surface-container-highest border border-white/10 text-on-surface-variant font-label-sm text-label-sm whitespace-nowrap hover:border-tertiary transition-colors";
+                });
+                btn.className = "px-5 py-2 rounded-full bg-primary text-on-primary font-label-sm text-label-sm whitespace-nowrap shadow-[0_0_10px_rgba(236,177,255,0.5)]";
+            });
+        });
+
+        async function loadPopular(category = null) {
+            try {
+                let url = `${BASE_URL}/api/v1/popular?top_n=6`;
+                if (category) {
+                    url += `&category=${encodeURIComponent(category)}`;
+                }
+                const res = await fetch(url);
+                if (res.ok) {
+                    const data = await res.json();
+                    renderCourses(data.courses);
+                }
+            } catch (err) {
+                console.error("Error loading popular courses:", err);
+            }
+        }
+
+        async function performSearch(query) {
+            if (!query.trim()) {
+                loadPopular();
+                return;
+            }
+            try {
+                const res = await fetch(`${BASE_URL}/api/v1/recommend?course_title=${encodeURIComponent(query)}&top_n=6`);
+                if (res.ok) {
+                    const data = await res.json();
+                    renderCourses(data.recommendations, true);
+                } else if (res.status === 404) {
+                    grid.innerHTML = `
+                        <div class="col-span-1 md:col-span-2 glass-card rounded-xl p-glass-padding text-center space-y-4 inner-stroke">
+                            <span class="material-symbols-outlined text-error text-5xl">warning</span>
+                            <h3 class="font-headline-md text-headline-md text-on-surface">Neural Node Not Found</h3>
+                            <p class="text-on-surface-variant font-body-md">The core database could not locate recommendations for "${query}".</p>
+                            <p class="text-primary font-label-sm text-label-sm">TRY SEARCHING FOR: "Neural Architecture", "Quantum", OR "Deep Learning".</p>
+                        </div>
+                    `;
+                }
+            } catch (err) {
+                console.error("Error searching courses:", err);
+            }
+        }
+
+        function renderCourses(courses, isRecommendation = false) {
+            if (!courses || courses.length === 0) {
+                grid.innerHTML = `<p class="col-span-2 text-center text-outline-variant py-8">No neural pathways active.</p>`;
+                return;
+            }
+            
+            grid.innerHTML = courses.map((course, idx) => {
+                const isFeatured = idx === 0 && !isRecommendation;
+                if (isFeatured) {
+                    return `
+                        <article onclick="window.location.href='details.html?title=' + encodeURIComponent('${course.Title}')" class="glass-card rounded-xl overflow-hidden group col-span-1 md:col-span-2 relative cursor-pointer">
+                            <div class="h-64 md:h-80 w-full relative">
+                                <img class="w-full h-full object-cover" src="${course.Image_URL}" alt="${course.Title}"/>
+                                <div class="absolute inset-0 bg-gradient-to-t from-surface-dim via-surface-dim/40 to-transparent"></div>
+                                <div class="absolute top-4 left-4 flex gap-2">
+                                    <span class="px-3 py-1 rounded-lg bg-tertiary/20 backdrop-blur-md border border-tertiary/40 text-tertiary font-label-xs text-label-xs">${course.Difficulty}</span>
+                                    <span class="px-3 py-1 rounded-lg bg-surface-dim/80 backdrop-blur-md border border-white/10 text-on-surface font-label-xs text-label-xs">${course.Duration.toUpperCase()}</span>
+                                </div>
+                            </div>
+                            <div class="p-glass-padding space-y-2">
+                                <h2 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary transition-colors">${course.Title}</h2>
+                                <p class="text-on-surface-variant font-body-md text-body-md line-clamp-2">${course.Description}</p>
+                                <div class="pt-4 flex items-center justify-between">
+                                    <div class="flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-tertiary text-sm">groups</span>
+                                        <span class="text-label-sm font-label-sm text-outline">${(course.Enrollment_Count/1000).toFixed(1)}k Students</span>
+                                    </div>
+                                    <button class="px-6 py-2 bg-primary rounded-lg text-on-primary font-label-sm text-label-sm font-bold shadow-[0_0_15px_rgba(236,177,255,0.4)] active:scale-95 transition-all">
+                                        Initialize Learning
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-0 left-0 h-1 bg-primary w-2/3 shadow-[0_0_8px_rgba(236,177,255,1)]"></div>
+                        </article>
+                    `;
+                } else {
+                    const matchBadge = course.match_percentage !== undefined && course.match_percentage !== null
+                        ? `<span class="px-2 py-1 rounded-md bg-primary/20 border border-primary/40 text-primary font-label-xs text-label-xs glow-violet">MATCH ${course.match_percentage}%</span>`
+                        : `<span class="px-2 py-1 rounded-md bg-secondary-container/80 backdrop-blur-sm text-on-secondary-container font-label-xs text-label-xs">${course.Difficulty}</span>`;
+
+                    return `
+                        <article onclick="window.location.href='details.html?title=' + encodeURIComponent('${course.Title}')" class="glass-card rounded-xl overflow-hidden group cursor-pointer">
+                            <div class="h-48 relative">
+                                <img class="w-full h-full object-cover" src="${course.Image_URL}" alt="${course.Title}"/>
+                                <div class="absolute inset-0 bg-gradient-to-t from-surface-dim/80 to-transparent"></div>
+                                <div class="absolute bottom-3 left-3">
+                                    ${matchBadge}
+                                </div>
+                            </div>
+                            <div class="p-stack-md space-y-stack-sm">
+                                <h3 class="font-headline-md text-[20px] text-on-surface group-hover:text-tertiary transition-colors line-clamp-1">${course.Title}</h3>
+                                <div class="flex items-center justify-between text-outline">
+                                    <span class="text-label-sm font-label-sm">${course.Duration}</span>
+                                    <div class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-[16px] text-yellow-400" style="font-variation-settings: 'FILL' 1;">star</span>
+                                        <span class="text-label-sm font-label-sm">${course.Avg_Rating}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="h-1 bg-tertiary/30 w-full group-hover:bg-tertiary transition-colors"></div>
+                        </article>
+                    `;
+                }
+            }).join('');
+            
+            // Re-apply hover animations/scroll reveal if needed
+            setupScrollReveal();
+        }
+
+        function setupScrollReveal() {
+            const observerOptions = { threshold: 0.1 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.glass-card').forEach(card => {
+                card.style.opacity = "0";
+                card.style.transform = "translateY(20px)";
+                card.style.transition = "all 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
+                observer.observe(card);
+            });
+        }
+
+        // Event listener for search input
+        searchInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                performSearch(searchInput.value);
+            }
+        });
+
+        // Load popular courses initially on page load
+        window.addEventListener('DOMContentLoaded', () => loadPopular());
+
+        // Floating particles
+        const canvas = document.createElement('canvas');
+        canvas.className = 'fixed inset-0 -z-30 pointer-events-none';
+        document.body.appendChild(canvas);
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        function resize() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 1.5;
+                this.speedX = Math.random() * 0.2 - 0.1;
+                this.speedY = Math.random() * 0.2 - 0.1;
+                this.opacity = Math.random() * 0.5;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.fillStyle = `rgba(236, 177, 255, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        function init() {
+            particles = [];
+            for (let i = 0; i < 50; i++) {
+                particles.push(new Particle());
+            }
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+            requestAnimationFrame(animate);
+        }
+        window.addEventListener('resize', resize);
+        resize();
+        init();
+        animate();
+    </script>
+</body></html>

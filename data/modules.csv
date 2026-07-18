@@ -1,0 +1,16 @@
+Course_ID,Module_ID,Title,URL,Module_Order,Puzzle_Question,Puzzle_Hint,Puzzle_Answer
+1,1_1,Java Setup & First Code,https://www.youtube.com/watch?v=WOUpItam-r4,1,Fix the syntax: public static void main(String args[]) { System.out.print('Hello') },Java statements must end with a semicolon.,System.out.print('Hello');
+1,1_2,Variables & Data Types,https://www.youtube.com/watch?v=SHIT5VeehI4,2,Declare an integer variable named 'age' and assign it the value 20.,"Use the 'int' keyword followed by the variable name, an equals sign, and the value.",int age = 20;
+1,1_3,Classes & Objects,https://www.youtube.com/watch?v=8S69GfQrkCg,3,Instantiate a new object of class 'Car' named 'myCar'.,Use the 'new' keyword to call the class constructor.,Car myCar = new Car();
+2,2_1,Python Basics,https://www.youtube.com/watch?v=aqvDTCYhK3w,1,Print the string 'Hello World' to the console.,Use the print() function with single or double quotes around the string.,print('Hello World')
+2,2_2,Lists & Tuples,https://www.youtube.com/watch?v=vLqTf2b6GZw,2,Create a list named 'fruits' containing 'apple' and 'banana'.,Use square brackets to enclose comma-separated string elements.,"fruits = ['apple', 'banana']"
+2,2_3,Loops,https://www.youtube.com/watch?v=cfJruaCgVjY,3,Write a for loop syntax to iterate over a list named 'items' using variable 'i'.,"Start with 'for i in', reference the list, and end with a colon.",for i in items:
+3,3_1,C++ Structure,https://www.youtube.com/watch?v=18c3MTX0PK0,1,Include the standard input/output stream library.,Use preprocessor directive #include followed by angle brackets containing iostream.,#include <iostream>
+3,3_2,Pointers,https://www.youtube.com/watch?v=vLnPwxZdW4Y,2,Declare an integer pointer named 'ptr'.,"Use 'int*' or 'int *' followed by the name, ending with a semicolon.",int* ptr;
+3,3_3,Object Oriented C++,https://www.youtube.com/watch?v=wN0x9eLdg1s,3,Create a public class named 'Dog'.,"Use the class keyword, dog name, curly braces enclosing 'public:', and a semicolon at the end.",class Dog { public: };
+4,4_1,C Basics,https://www.youtube.com/watch?v=aZb0iu4uGwA,1,Write the syntax to return 0 from the main function.,Use the return keyword followed by 0 and a semicolon.,return 0;
+4,4_2,Control Flow,https://www.youtube.com/watch?v=aZb0iu4uGwA&t=3600,2,Write an if statement checking if x is equal to 5.,"Do not use curly braces or semicolons, just the basic if condition statement.",if (x == 5)
+4,4_3,Memory Management,https://www.youtube.com/watch?v=aZb0iu4uGwA&t=7200,3,Use malloc to allocate memory for an integer pointer 'p'.,Assign malloc to p casting it to int* and specifying sizeof(int).,p = (int*)malloc(sizeof(int));
+5,5_1,Cargo & Setup,https://www.youtube.com/watch?v=MsocPEZBd-M,1,Write the cargo command to create a new project.,Use cargo followed by new. Do not specify a project name.,cargo new
+5,5_2,Variables & Mutability,https://www.youtube.com/watch?v=MsocPEZBd-M&t=1200,2,Declare a mutable integer variable named 'count' initialized to 0.,"Use 'let mut' followed by the variable name, equals sign, and value.",let mut count = 0;
+5,5_3,Ownership & Borrowing,https://www.youtube.com/watch?v=MsocPEZBd-M&t=2400,3,Pass a variable 's' as an immutable reference to a function.,Prefix the variable name with an ampersand.,&s

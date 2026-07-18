@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Neural Learn Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500;600&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&family=Sora:wght@100..900&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#514254",
+                        "tertiary-fixed-dim": "#00dbe9",
+                        "surface-dim": "#171020",
+                        "primary-fixed": "#f9d8ff",
+                        "background": "#171020",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed": "#002022",
+                        "on-tertiary-container": "#000607",
+                        "on-surface-variant": "#d5c0d7",
+                        "on-error-container": "#ffdad6",
+                        "tertiary-fixed": "#7df4ff",
+                        "tertiary-container": "#00848d",
+                        "on-surface": "#ebdef6",
+                        "surface-tint": "#ecb1ff",
+                        "on-background": "#ebdef6",
+                        "surface-container-low": "#201829",
+                        "primary-fixed-dim": "#ecb1ff",
+                        "surface-container-lowest": "#120b1b",
+                        "inverse-on-surface": "#352d3f",
+                        "on-primary": "#520070",
+                        "on-secondary-fixed": "#2b0052",
+                        "on-error": "#690005",
+                        "outline": "#9d8ba0",
+                        "on-secondary": "#421b6a",
+                        "primary-container": "#bf00ff",
+                        "surface": "#171020",
+                        "secondary-container": "#5c3785",
+                        "primary": "#ecb1ff",
+                        "inverse-primary": "#9900ce",
+                        "surface-bright": "#3e3648",
+                        "surface-container": "#241c2d",
+                        "on-tertiary": "#00363a",
+                        "error": "#ffb4ab",
+                        "surface-variant": "#3a3143",
+                        "on-primary-fixed": "#320046",
+                        "on-primary-container": "#ffffff",
+                        "on-secondary-fixed-variant": "#593482",
+                        "on-tertiary-fixed-variant": "#004f54",
+                        "surface-container-highest": "#3a3143",
+                        "surface-container-high": "#2f2738",
+                        "on-secondary-container": "#d0a7fe",
+                        "inverse-surface": "#ebdef6",
+                        "tertiary": "#00dbe9",
+                        "secondary-fixed-dim": "#dbb8ff",
+                        "secondary-fixed": "#efdbff",
+                        "secondary": "#dbb8ff",
+                        "on-primary-fixed-variant": "#75009e"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "gutter": "16px",
+                        "stack-sm": "8px",
+                        "container-padding": "24px",
+                        "stack-md": "16px",
+                        "glass-padding": "20px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Sora"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Sora"],
+                        "label-xs": ["JetBrains Mono"],
+                        "headline-lg-mobile": ["Sora"],
+                        "display": ["Sora"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "label-xs": ["10px", {"lineHeight": "12px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "700"}],
+                        "display": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "800"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(58, 49, 67, 0.4);
+            backdrop-filter: blur(32px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glow-violet {
+            box-shadow: 0 0 20px rgba(191, 0, 255, 0.3);
+        }
+        .glow-cyan {
+            box-shadow: 0 0 20px rgba(0, 219, 233, 0.2);
+        }
+        .inner-stroke {
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+        }
+        body {
+            background-color: #0b0514;
+            color: #ebdef6;
+            overflow-x: hidden;
+        }
+        .nebula-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(191, 0, 255, 0.15) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(0, 219, 233, 0.1) 0%, transparent 40%);
+            z-index: -1;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(236, 177, 255, 0.2);
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-body-md antialiased">
+<div class="nebula-bg"></div>
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-container-padding py-stack-md bg-surface/60 backdrop-blur-xl border-b border-white/10">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full border-2 border-primary/50 overflow-hidden glow-violet">
+<img class="w-full h-full object-cover" data-alt="A futuristic close-up portrait of a digital avatar with neural circuitry glowing softly on the temples and neck. The lighting is deep violet and electric blue, reflecting a high-tech cyberpunk academic aesthetic. The background is a blurred void of data streams and soft neon accents, fitting perfectly into the dark learning environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpmgkov-0s1rTToXWxowGWu8qgC5ndD8xwNBpYtgb0O6vFzVao99Gr8nf2OObopdFXaRIRrrlBniCqrTDwZTsPwphWNnjVEH7B6u_XYf1H_RsQhNU5UzYv_klaeMXvhnBJLkuX2y0TAo4Jxw75rsCUGaOTygKuo0IupC07-n0ttMv8A3ib-Aehu-ttkoYinoeipHFWc4VoUQZp1vWHytyvN2twDSLyGKQMkjafPNnEUJDcIhBjN3Q-9w"/>
+</div>
+<h1 class="font-display text-headline-md tracking-widest text-primary drop-shadow-[0_0_8px_rgba(236,177,255,0.8)]">NEURAL LEARN</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full glass-card hover:text-tertiary transition-colors duration-300">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-28 px-container-padding space-y-stack-lg max-w-screen-xl mx-auto">
+<!-- Welcome Section -->
+<section class="space-y-stack-sm">
+<p class="font-label-sm text-label-sm text-tertiary tracking-widest">NEURAL STATUS: OPTIMIZED</p>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface">Welcome back, Architect.</h2>
+</section>
+<!-- Daily Recommendations (Horizontal Scroll) -->
+<section class="space-y-stack-md">
+<div class="flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md">Daily Recommendations</h3>
+<span class="font-label-sm text-label-sm text-primary">VIEW ALL</span>
+</div>
+<div class="flex gap-stack-md overflow-x-auto pb-4 custom-scrollbar snap-x -mx-container-padding px-container-padding" id="daily-recommendations-container">
+<!-- Cards will be populated dynamically -->
+</div>
+</section>
+<!-- Continue Learning (List) -->
+<section class="space-y-stack-md">
+<h3 class="font-headline-md text-headline-md">Continue Learning</h3>
+<div class="space-y-stack-md">
+<div class="glass-card rounded-xl p-stack-md flex gap-4 items-center inner-stroke">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="Close-up of a digital eyeball with glowing purple iris and microchip-like patterns on the sclera. Detailed lighting effects with neon violet reflections. High-tech, bio-digital integration theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBOBEmBY5wZOUb-WaSk_8juA0yDElnCTOC-OQFCpTVOOvPRrYTY9tmAHuj-ksFJbYlIiGFEUbf4kD32r6ZlP41g0YExuWOVldXzWIKBUvEs5NVzAMnq0gCouSoAJ-3BeNmQcYvcHoAk-DJT1RQypG09rgX4WQt8ISkNTcob8h-i3IlDjksGmVZk7Wo8JGz4F8pc5-a4XMlqRNNuxmcL9fN68U7JTZmzacj2SUrgcdvjGvze3q7vn3DKfA"/>
+</div>
+<div class="flex-1 space-y-1">
+<h4 class="font-headline-md text-[16px] text-on-surface leading-none">Bio-Digital Interfaces</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Module 4: Neural Linkage</p>
+<div class="w-full h-1.5 bg-outline-variant rounded-full mt-2 overflow-hidden">
+<div class="h-full bg-tertiary w-[75%] glow-cyan"></div>
+</div>
+</div>
+<div class="text-tertiary">
+<span class="material-symbols-outlined">play_circle</span>
+</div>
+</div>
+<div class="glass-card rounded-xl p-stack-md flex gap-4 items-center inner-stroke">
+<div class="w-16 h-16 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="A matrix of binary code flowing in a 3D tunnel, rendered in deep purple and cyan. Soft blur on the edges creating depth. Tech-noir academic aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwx7WibCcOOmxNSqEfmhl3x9_ORWZCi45KdXE_WtGjmqGSyB3sAfMKrtMphxH_q0fA_c5asXsDIaxxY27YSHis6qlbeEqscRZA_IpCXOzfUCzhY2K6vGn-p5yv0Qq8b830BxKIYLPOvwq4t3EWylJrfehGzkwvp9hYeXqU5lFtErsZ11fH4aqu_OjAO0Z7jVA11LOyQzZGW51bwHOY2Zwsv7sSRR3I_VS5n91DFhc7FTi8fcuUs0bdHQ"/>
+</div>
+<div class="flex-1 space-y-1">
+<h4 class="font-headline-md text-[16px] text-on-surface leading-none">Cybersecurity Core</h4>
+<p class="font-label-sm text-label-sm text-on-surface-variant">Module 2: Encryption Theory</p>
+<div class="w-full h-1.5 bg-outline-variant rounded-full mt-2 overflow-hidden">
+<div class="h-full bg-tertiary w-[40%] glow-cyan"></div>
+</div>
+</div>
+<div class="text-tertiary">
+<span class="material-symbols-outlined">play_circle</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Skill Growth (Visual Chart Placeholder) -->
+<section class="space-y-stack-md">
+<h3 class="font-headline-md text-headline-md">Skill Growth</h3>
+<div class="glass-card rounded-xl p-glass-padding h-64 inner-stroke relative overflow-hidden flex flex-col justify-between">
+<div class="flex justify-between items-start z-10">
+<div class="space-y-1">
+<p class="font-label-sm text-label-sm text-on-surface-variant">WEEKLY PROGRESS</p>
+<p class="font-headline-lg-mobile text-headline-lg-mobile text-primary">+2.4k XP</p>
+</div>
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-primary glow-violet"></div>
+<div class="w-2 h-2 rounded-full bg-tertiary glow-cyan"></div>
+</div>
+</div>
+<!-- SVG Chart Mock -->
+<div class="absolute inset-0 top-20 flex items-end px-4 gap-4 pb-8">
+<div class="flex-1 bg-primary/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary/40 rounded-t-lg transition-all h-[60%] group-hover:h-[70%]"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 font-label-xs text-label-xs text-on-surface-variant">M</span>
+</div>
+<div class="flex-1 bg-primary/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary/40 rounded-t-lg transition-all h-[40%] group-hover:h-[50%]"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 font-label-xs text-label-xs text-on-surface-variant">T</span>
+</div>
+<div class="flex-1 bg-primary/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary/40 rounded-t-lg transition-all h-[80%] group-hover:h-[90%]"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 font-label-xs text-label-xs text-on-surface-variant">W</span>
+</div>
+<div class="flex-1 bg-primary/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary/40 rounded-t-lg transition-all h-[55%] group-hover:h-[65%]"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 font-label-xs text-label-xs text-on-surface-variant">T</span>
+</div>
+<div class="flex-1 bg-primary/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary/60 rounded-t-lg transition-all h-[95%] group-hover:h-[100%] glow-violet"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 font-label-xs text-label-xs text-primary font-bold">F</span>
+</div>
+<div class="flex-1 bg-primary/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary/40 rounded-t-lg transition-all h-[20%] group-hover:h-[30%]"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 font-label-xs text-label-xs text-on-surface-variant">S</span>
+</div>
+<div class="flex-1 bg-primary/20 rounded-t-lg relative group h-32">
+<div class="absolute bottom-0 w-full bg-primary/40 rounded-t-lg transition-all h-[10%] group-hover:h-[20%]"></div>
+<span class="absolute -bottom-6 left-1/2 -translate-x-1/2 font-label-xs text-label-xs text-on-surface-variant">S</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Bento Section -->
+<section class="grid grid-cols-2 gap-stack-md">
+<div class="glass-card rounded-xl p-stack-md inner-stroke space-y-2">
+<span class="material-symbols-outlined text-tertiary">local_fire_department</span>
+<p class="font-headline-md text-[20px] text-on-surface" id="stat-streak">12 Days</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">STREAK</p>
+</div>
+<div class="glass-card rounded-xl p-stack-md inner-stroke space-y-2">
+<span class="material-symbols-outlined text-primary">emoji_events</span>
+<p class="font-headline-md text-[20px] text-on-surface" id="stat-level">Lv. 24</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant">RANK</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center h-20 pb-safe px-gutter bg-surface-container-lowest/80 backdrop-blur-2xl rounded-t-xl border-t border-white/10 shadow-[0_-10px_30px_rgba(0,219,233,0.15)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-tertiary-fixed-dim transition-all" href="explore.html">
+<span class="material-symbols-outlined">explore</span>
+<span class="font-label-sm text-label-sm">Explore</span>
+</a>
+<a class="flex flex-col items-center justify-center text-tertiary drop-shadow-[0_0_10px_rgba(0,219,233,0.8)] transition-all" href="index.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">school</span>
+<span class="font-label-sm text-label-sm">Learning</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-tertiary-fixed-dim transition-all" href="#">
+<span class="material-symbols-outlined">psychology</span>
+<span class="font-label-sm text-label-sm">AI Labs</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-tertiary-fixed-dim transition-all" href="profile.html">
+<span class="material-symbols-outlined">account_circle</span>
+<span class="font-label-sm text-label-sm">Profile</span>
+</a>
+</nav>
+<!-- FAB (Contextual for Dashboard) -->
+<button id="dashboard-fab" onclick="window.location.href='explore.html'" class="fixed right-6 bottom-24 w-14 h-14 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-lg glow-violet active:scale-95 transition-transform z-40">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">add</span>
+</button>
+<script>
+        const BASE_URL = window.location.origin;
+
+        async function initDashboard() {
+            try {
+                // Fetch User Profile
+                const profileRes = await fetch(`${BASE_URL}/api/v1/profile`);
+                if (profileRes.ok) {
+                    const profile = await profileRes.json();
+                    document.getElementById('stat-streak').innerText = `${profile.streak_days} Days`;
+                    document.getElementById('stat-level').innerText = `Lv. ${profile.level}`;
+                    
+                    // Welcome header personalization
+                    const welcomeHeader = document.querySelector('h2');
+                    if (welcomeHeader) {
+                        welcomeHeader.innerText = `Welcome back, ${profile.name.split(' ')[0]}.`;
+                    }
+                }
+            } catch (err) {
+                console.error("Error fetching profile:", err);
+            }
+
+            try {
+                // Fetch Popular Courses as Recommendations
+                const popularRes = await fetch(`${BASE_URL}/api/v1/popular?top_n=5`);
+                if (popularRes.ok) {
+                    const data = await popularRes.json();
+                    const container = document.getElementById('daily-recommendations-container');
+                    
+                    if (data.courses && data.courses.length > 0) {
+                        container.innerHTML = data.courses.map(course => `
+                            <div onclick="window.location.href='details.html?title=' + encodeURIComponent('${course.Title}')" class="flex-shrink-0 w-72 h-96 glass-card rounded-xl overflow-hidden inner-stroke snap-start group cursor-pointer active:scale-95 transition-all opacity-100 transform translate-y-0">
+                                <div class="h-48 relative">
+                                    <img class="w-full h-full object-cover" src="${course.Image_URL}" alt="${course.Title}"/>
+                                    <div class="absolute inset-0 bg-gradient-to-t from-surface-dim/90 to-transparent"></div>
+                                    <div class="absolute bottom-4 left-4 flex gap-2">
+                                        <span class="px-2 py-1 bg-secondary-container/80 rounded-lg font-label-xs text-label-xs text-secondary-fixed">${course.Category.toUpperCase()}</span>
+                                    </div>
+                                </div>
+                                <div class="p-glass-padding space-y-stack-sm flex flex-col justify-between h-48">
+                                    <div>
+                                        <h4 class="font-headline-md text-[20px] text-on-primary-container leading-tight line-clamp-1">${course.Title}</h4>
+                                        <p class="font-body-md text-[14px] text-on-surface-variant line-clamp-2">${course.Description}</p>
+                                    </div>
+                                    <div class="flex items-center justify-between mt-auto">
+                                        <div class="flex items-center gap-1 text-tertiary">
+                                            <span class="material-symbols-outlined text-[18px]">schedule</span>
+                                            <span class="font-label-sm text-label-sm">${course.Duration}</span>
+                                        </div>
+                                        <button class="bg-primary px-4 py-1 rounded-full text-on-primary font-label-sm hover:glow-violet transition-all">START</button>
+                                    </div>
+                                    <div class="h-1 bg-outline-variant w-full rounded-full overflow-hidden">
+                                        <div class="h-full bg-primary w-[25%]"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('');
+                        
+                        setupScrollReveal();
+                    }
+                }
+            } catch (err) {
+                console.error("Error fetching popular recommendations:", err);
+            }
+        }
+
+        function setupScrollReveal() {
+            const observerOptions = { threshold: 0.1 };
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = "1";
+                        entry.target.style.transform = "translateY(0)";
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.glass-card').forEach(card => {
+                card.style.opacity = "0";
+                card.style.transform = "translateY(20px)";
+                card.style.transition = "all 0.6s cubic-bezier(0.22, 1, 0.36, 1)";
+                observer.observe(card);
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', initDashboard);
+
+        const fab = document.getElementById('dashboard-fab');
+        if (fab) {
+            let floatY = 0;
+            let direction = 1;
+            function animateFAB() {
+                floatY += 0.05 * direction;
+                if (floatY > 5 || floatY < -5) direction *= -1;
+                fab.style.transform = `translateY(${floatY}px)`;
+                requestAnimationFrame(animateFAB);
+            }
+            animateFAB();
+        }
+    </script>
+</body></html>
