@@ -16,6 +16,68 @@
 
 ---
 
+## 📸 Visual Tour & Application Walkthrough
+
+### 1️⃣ Interactive Skill Tree Progression Map
+> **Use Case:** Visualizes the student's learning journey as a milestone-based linear skill tree. Modules are sequentially unlocked — students must solve the prerequisite coding puzzle before progressing to subsequent stages.
+
+![Interactive Skill Tree Map](assets/skill_tree_map.png)
+
+- **Dynamic Statuses:**
+  - ✅ **Completed:** Modules previously mastered (e.g., *Module 1: Java Setup & First Code*).
+  - 🎯 **Active Level:** The current stage unlocked for study and puzzle submission (e.g., *Module 2: Variables & Data Types*).
+  - 🔒 **Stage Locked:** Future modules strictly disabled until prerequisites are fulfilled.
+
+---
+
+### 2️⃣ Synchronized Video Player & Live Coding Sandbox
+> **Use Case:** Provides an integrated dual-pane learning environment where students watch curated video lessons and immediately practice live syntax repair in the browser.
+
+![Interactive Lesson & Coding Challenge](assets/interactive_lesson.png)
+
+- **Video Synchronization:** Timestamp-aware embedded YouTube player delivering bite-sized concepts.
+- **Coding Sandbox:** Live syntax input box with intelligent string normalization (ignoring whitespace and quotation variations).
+- **Guided Learning:** Expandable hint drawers assisting students without giving away full solutions.
+
+---
+
+### 3️⃣ Glassmorphic AI Learning Dashboard
+> **Use Case:** Centralized hub tracking user engagement streaks, experience levels, and personalized course suggestions.
+
+![Dashboard Overview](assets/dashboard_overview.png)
+
+- **Streak & Level Indicators:** Gamified metrics motivating daily continuous learning.
+- **Daily Recommendations:** AI-curated course cards with duration badges, category tags, and one-click enrollment.
+
+---
+
+### 4️⃣ AI Match Score & Course Deep-Dive
+> **Use Case:** Delivers deep insights into curriculum structure and AI-predicted completion probability based on the student's profile.
+
+![Course Details & AI Prediction](assets/course_details_ai.png)
+
+- **AI Match Prediction:** Quantitative match rating calculated via TF-IDF textual similarity.
+- **Neural Engine Insights:** Natural language analysis highlighting key learning objectives and bridge concepts.
+
+---
+
+### 5️⃣ Intelligent Course Discovery & Search
+> **Use Case:** Allows students to explore diverse learning pathways through real-time query matching and category filtering.
+
+![Course Discovery](assets/course_discovery.png)
+
+- **Fast Exploration:** Instant search across programming tracks and domains.
+- **Categorical Filtering:** Quick-switch badges for Systems Programming, Core CS, and Core Programming.
+
+---
+
+### 6️⃣ Interactive Swagger API Documentation
+> **Use Case:** Fully documented OpenAPI/Swagger interface allowing developers to test endpoints, inspect schemas, and integrate third-party clients.
+
+![Swagger API Documentation](assets/swagger_api_docs.png)
+
+---
+
 ## ✨ Key Features
 
 - 🗺️ **Interactive Gamified Skill Tree Map**
@@ -116,6 +178,13 @@ Neural Learn comes pre-configured with 5 comprehensive programming tracks spanni
 
 ```plaintext
 SANSKAR_AI_PBEL_3.0/
+├── assets/                  # High-resolution screenshots and UI demonstration media
+│   ├── course_details_ai.png
+│   ├── course_discovery.png
+│   ├── dashboard_overview.png
+│   ├── interactive_lesson.png
+│   ├── skill_tree_map.png
+│   └── swagger_api_docs.png
 ├── app/
 │   ├── __init__.py
 │   ├── main.py              # FastAPI application, route handlers & static file mounting
